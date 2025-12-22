@@ -400,6 +400,7 @@ section {
 .btn-primary:hover {
   background: var(--accent-primary-dark);
   border-color: var(--accent-primary-dark);
+  color: var(--pure-white);
   transform: translateY(-3px);
   box-shadow: 0 6px 40px var(--accent-glow);
 }
