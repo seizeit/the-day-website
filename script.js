@@ -102,6 +102,36 @@
   };
 
   // ═══════════════════════════════════════════════════════════════
+  // MOBILE MENU TOGGLE
+  // ═══════════════════════════════════════════════════════════════
+
+  const initMobileMenu = () => {
+    const header = document.getElementById('header');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (!menuToggle || !header) return;
+
+    menuToggle.addEventListener('click', () => {
+      header.classList.toggle('menu-open');
+    });
+
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        header.classList.remove('menu-open');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target) && header.classList.contains('menu-open')) {
+        header.classList.remove('menu-open');
+      }
+    });
+  };
+
+  // ═══════════════════════════════════════════════════════════════
   // INITIALIZE ALL FEATURES
   // ═══════════════════════════════════════════════════════════════
 
@@ -114,6 +144,7 @@
     initScrollReveal();
     initHeaderScroll();
     initSmoothScroll();
+    initMobileMenu();
 
     console.log('the.day - All features initialized');
   };
